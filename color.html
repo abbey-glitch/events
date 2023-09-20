@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="green()">green</button> | <button>yellow</button> | <button onclick="reset()">reset</button>
+    <script>
+        (function(){
+            let colorVault = JSON.parse(localStorage.getItem('colorVault'))
+            if(colorVault == null || colorVault == undefined){
+                document.body.style.backgroundColor = 'red'
+            }else{
+                document.body.style.backgroundColor = colorVault['background']
+                // localStorage.setItem('colorVault', JSON.stringify(color))
+            }  
+        }())
+
+        function green(){
+            colorVault = JSON.parse(localStorage.getItem('colorVault'))
+            colorVault = {
+                background : 'green'
+            }
+            if(colorVault != null || colorVault != undefined){
+                document.body.style.backgroundColor = colorVault['background']
+            }
+            localStorage.setItem('colorVault', JSON.stringify(colorVault))
+        }
+        function reset(){
+            localStorage.removeItem('colorVault')
+            location.reload()
+        }
+    </script>
+</body>
+</html>

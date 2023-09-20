@@ -1,0 +1,11 @@
+/* 
+call a selector that is never in existence on
+your static page
+then style it an attech to your js document
+for the signup
+*/
+
+.signUpCont{
+    background-color: grey;
+    color:aliceblue;
+}

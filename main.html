@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in js</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Hello From these area</h1>
+        <div id="field">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, laboriosam.</p>
+            <button id="red">Green</button>
+        </div>
+        <pre id="output">
+
+        </pre>
+    </div>
+    <script>
+        // let red = document.getElementById('red')
+        // red.addEventListener('click', function(e){
+        //     console.log(e)
+        // }, {capture:true})
+        let output = document.querySelector('#output')
+        console.log(output)
+        function frevent(e){
+            output.textContent += `you clicked on a ${e.currentTarget.tagName}`
+        }
+        let red = document.getElementById('red')
+        let field = document.getElementById('field')
+        document.body.addEventListener('click', frevent)
+        field.addEventListener('click', frevent)
+        red.addEventListener('click', frevent)
+    </script>
+</body>
+</html>

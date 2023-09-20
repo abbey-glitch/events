@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events in javascript</title>
+</head>
+<body>
+    <div id="wrapper">
+        <form action="">
+            <div class="formContent">
+                <label for="username">username</label>
+                <input type="text" name="username" id="fname"><br>
+                <label for="password">password</label>
+                <input type="password" name="password" id="pwd"><hr>
+                <label for="checkme">Show password</label>
+                <!-- <span id="dsp"></span> -->
+                <input type="radio" id="check">
+                <input type="submit" value="login"><br>
+            </div>
+        </form>
+        
+    </div>
+    <!-- <pre id="output">
+        <button id="btn">click me</button>
+    </pre> -->
+    <script>
+        /**
+         * show and hide password logic
+        */
+       let submit = document.querySelector("input[type='submit']")
+       submit.addEventListener('click', function(e){
+        e.preventDefault()
+        let pwd = document.getElementById('pwd')
+        let check = document.getElementById('check')
+        if(check.checked == true){
+            
+        }else{
+            
+        }
+        // alert("hide pwd")
+       })
+
+
+
+
+
+
+
+        // let btn = document.getElementById('btn')
+        // function lister(e){
+        //     console.log(e.currentTarget.tagName)
+        // }
+        // btn.addEventListener('click', lister, true)
+        // let output = document.getElementById("output")
+        // output.addEventListener('click', lister, true)
+        // // btn.addEventListener('click', function(e){
+        // //     console.log(e.target.innerText = 'show new')
+        // // })
+    </script>
+</body>
+</html>
