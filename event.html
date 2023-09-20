@@ -13,6 +13,7 @@
                 <input type="text" name="username" id="fname"><br>
                 <label for="password">password</label>
                 <input type="password" name="password" id="pwd"><hr>
+                <span id="output"></span>
                 <label for="checkme">Show password</label>
                 <!-- <span id="dsp"></span> -->
                 <input type="radio" id="check">
@@ -28,15 +29,21 @@
         /**
          * show and hide password logic
         */
+        let pwd = document.getElementById('pwd')
+        let disp = document.getElementById('output')
+        pwd.addEventListener('keyup', function(){
+            disp.textContent = pwd.value
+            console.log(pwd.value)
+        })
        let submit = document.querySelector("input[type='submit']")
        submit.addEventListener('click', function(e){
         e.preventDefault()
         let pwd = document.getElementById('pwd')
         let check = document.getElementById('check')
         if(check.checked == true){
-            
+            console.log(pwd.type='text')
         }else{
-            
+            console.log(pwd.type='password')
         }
         // alert("hide pwd")
        })
