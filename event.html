@@ -31,7 +31,7 @@
         */
         let pwd = document.getElementById('pwd')
         let disp = document.getElementById('output')
-        pwd.addEventListener('keyup', function(){
+        pwd.addEventListener('keydown', function(){
             disp.textContent = pwd.value
             console.log(pwd.value)
         })

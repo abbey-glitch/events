@@ -6,13 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-    <p>weekday</p>
+    <form action="javascript:void()">
+        <input type="text">
+        <textarea name="editor" id="editor" cols="30" rows="10">
+
+        </textarea>
+        <input type="submit" onclick="alert(myeditor.getData())" value="save">
+    </form>
+    <script src="ckeditor5-build-classic/ckeditor.js"></script>
     <script>
-       function check(a, b, c){
-        // arguments[2] = 9
-        console.log(arguments[2])
-       }
-       check(4, 2, 8)
+       ClassicEditor.create(
+        document.getElementById('editor'),{
+            image: {
+                toolbar: [ 'toggleImageCaption', 'imageTextAlternative' ]
+               }
+        }).then(
+            editor=>{
+                console.log('editor was initialized')
+                myeditor = editor  
+            }
+        ).catch(error=>{
+            console.log(error)
+        })
+    //    function check(a, b, c){
+    //     // arguments[2] = 9
+    //     console.log(arguments)
+    //    }
+    //    setTimeout(check, 1000)
+    //    check(4, 2, 8)
 
     </script>
 </body>
