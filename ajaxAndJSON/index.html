@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax And JSON</title>
+</head>
+<body>
+    <div id="wrapper">
+        <tbody>
+   <td>$</td>
+        </tbody>
+    </div>
+    <script>
+        let wrapper = document.getElementById("wrapper")
+        
+        // asyncronous part of api consumption
+       async function getFact(){
+            // await console.log('hello')
+            await fetch('profile.json').then(data=>data.json()).then(data =>{
+                let table = document.createElement("table")
+                table.innerHTML = `
+                           <caption>PROFILE</caption>
+                           <tHead>
+                            <tr>
+                            <th>fname</th>
+                            <th>lname</th>
+                            <th>age</th>
+                            </tr>
+                            </tHead>
+                            <tbody>
+
+                              `
+                for(let i=0; i<data.length; i++){
+                 table.innerHTML +=`
+                            <tr>
+                                <td>${data[i]["fname"]}</td>
+                                <td>${data[i]["lname"]}</td> 
+                                <td>${data[i]["age"]}</td>  
+                                </tr>`
+                }
+            })
+        }
+        wrapper.appendChild(table)
+        getFact()
+
+
+
+
+
+        // let wrapper = document.getElementById('wrapper')
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('GET', 'https://datausa.io/api/data?drilldowns=Nation&measures=Population')
+        // xhr.onreadystatechange = function(){
+            
+        //     // console.log('ok')
+        //     if(this.status == 200 && this.readyState == 4){
+        //         console.log('ok')
+        //         let feedback = JSON.parse(xhr.responseText)
+        //         console.log(feedback)
+                
+        //     }
+        //     // let table = document.createElement('table')
+        //     // let feedback = JSON.parse(xhr.responseText)
+        //     // let datas = feedback['data']
+        //     // for(let data = 0; data < datas.length; data++){}
+        //     // table.innerHTML = `<caption>jSON data</caption>
+        //     //                     <thead>
+        //     //                         <th>Sn</th>
+        //     //                         <th>Fname</th>
+        //     //                         <th>Lname</th>
+        //     //                         <th>Age</th>
+        //     //                     </thead>
+        //     //                     <tbody>`
+        //     // let data = JSON.parse(xhr.responseText)
+        //     // for(let i=0; i<data.length; i++){
+        //     //     table.innerHTML += `<td>${i + 1}</td>
+        //     //                         <td>${data[i]['fname']}</td>
+        //     //                         <td>${data[i]['lname']}</td>
+        //     //                         <td>${data[i]['age']}</td>
+        //     //                         </tbody>`
+        //     //     console.log(data[i])
+        //     // }
+        //     // wrapper.appendChild(table)
+        // }
+        // // xhr.onerror = ()=>{
+
+        // // }
+        // xhr.send()
+
+    </script>
+</body>
+</html>

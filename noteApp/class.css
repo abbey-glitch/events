@@ -1,4 +1,4 @@
-.me{
+.me, .first-section{
     background-color: yellow;
     width: 50%;
     margin: 0 auto;
@@ -18,7 +18,11 @@ legend{
     color: darkred;
     text-transform: uppercase;
 }
-
-button{
-    
+.error{
+    background-color: red;
+    color: aliceblue;
+}
+.success{
+    background-color: green;
+    color: aliceblue;
 }

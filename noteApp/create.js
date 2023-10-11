@@ -6,7 +6,7 @@ window.onload = function(note_store){
         //check the note length in the store and inform the user the length
         // of note
         let notesLength = note_store.length
-        info.textContent = `you current have ${notesLength} note`
+        info.textContent = `you currently have ${notesLength} note`
     }
 }
 
@@ -28,12 +28,25 @@ save.addEventListener('click', function(){
     if(title.length == 0 || content.length == 0 || author.length == 0){
         msg = 'you can not save empty note'
         warn.textContent = msg
+        warn.setAttribute('class', 'error')
     }else{
         // there is note
         let note_store = JSON.parse(localStorage.getItem('notes'))
         if(note_store == null || note_store == undefined){
             noteVault.push({title, content, author, timestamp})
             localStorage.setItem('notes', JSON.stringify(noteVault))
+            msg = 'your first note saved'
+            warn.textContent = msg
+            warn.setAttribute('class', 'success')
+        }else{
+            // there is a note in the storage
+            old_note = note_store
+            old_note.push({title, content, author, timestamp})
+            localStorage.setItem('notes', JSON.stringify(old_note))
+            console.log(old_note)
         }
     }
 })
+function read(){
+    location.href = 'read.html'
+}
