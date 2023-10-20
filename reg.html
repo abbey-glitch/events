@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validating user input from prompt</title>
+</head>
+<body>
+    <div id="wrapper">
+
+    </div>
+    <script>
+        // /**
+        //  * write a function that check the username
+        //  * the username should contain5wrd, 2digit, 2specialxter
+        //  * password sevenxters four digits, 3 special xter
+        //  * 
+        function checkUsername(username){
+            let pattern = /[a-z]{5}/i
+            if(pattern.test(username)){
+                return true
+            }else{
+                return false
+            }
+        }
+        function checkPassword(pwd){
+            let pattern = /\d{3}/
+            if(pattern.test(pwd)){
+                return true
+            }else{
+                return false
+            }
+        }
+
+
+        while (true) {
+            username = prompt("enter your name? ")
+            let feedback = checkUsername(username)
+            if(feedback){
+                alert("name match")
+                pwd = prompt("enter your password")
+                let feedback2 = checkPassword(pwd)
+                if(feedback2){
+                    alert('pwd match')
+                }else{
+                    alert('alert pwd mistmatch')
+                }
+            }else{
+                alert("name mismatch")
+            }
+
+        }
+
+
+
+
+
+
+
+        // username = prompt("what is your name").trim()
+        
+        // if(username.length == 0){
+
+        //     alert("enter your username")
+        // }else{
+
+        //     if(pattern.test(username)){
+                
+        //         alert("name verified")
+        //     }else{
+        //         alert('not verified')
+        //     }
+        // }
+        
+    </script>
+</body>
+</html>

@@ -44,26 +44,50 @@ function Edit(timestamp){
                                         <form method="" action="javascript:void" class="first-section">
                                         <h3>note to be edited</h3>
                                          <input type="text" value="${notes[note]['title']}" id="oldTitle"><br/>
-                                         <textarea>${notes[note]['content']}</textarea>
-                                         <input type="text" value="${notes[note]['author']}">
+                                         <textarea id="oldContent">${notes[note]['content']}</textarea>
+                                         <input type="text" id="oldAuthor" value="${notes[note]['author']}">
                                          <div id="edit_layout">
-                                            <input type="text" id='new_title'><br/>
-                                            <textarea col="30" row="10" id="new_content">
+                                            <input type="text" id='new_title' placeholder="enter a note title to update"><br/>
+                                            <textarea col="30" row="10" id="new_content" placeholder="txt content to update">
+
                                             </textarea>
-                                            <input type="text" placeholder="author name" id="new_author">
+                                            <input type="text" placeholder="author name" id="new_author" placeholder="author name">
                                          </div>
                                          <div id="controls">
                                             <button id="update${timestamp}">Update</button>
                                          </div>
                                          </form>` 
-            console.log(notes[note])
+            // console.log(notes[note])
         }
     
     } 
     read_note.appendChild(edit_template)
     document.getElementById("update"+timestamp).addEventListener('click', function(){
-       
-        // console.log(oldTitle)
+        old_title = document.getElementById('oldTitle').value
+        old_content = document.getElementById('oldContent').value
+        old_author = document.getElementById('oldAuthor').value
+        let new_title = document.getElementById('new_title').value.trim()
+        let new_content = document.getElementById('new_content').value.trim()
+        let new_author = document.getElementById('new_author').value.trim()
+        if(new_title.length == 0 || new_content.length == 0 || new_author.length == 0){
+            alert('field is required for update')
+        }else if(new_title == old_title || new_content == old_content){
+            alert("title already exist")
+        }else{
+            let dateUpdate = new Date()
+            let newTimestamp = dateUpdate.getMilliseconds()
+            for(let i=0; i<notes.length; i++){
+               if(notes[i]['timestamp']==timestamp){
+                 notes[i]['title'] = new_title
+                 notes[i]['content'] = new_content
+                 notes[i]['author'] = new_author
+                 notes[i]['timestamp'] = newTimestamp
+               }
+            }
+            localStorage.setItem('notes', JSON.stringify(notes))
+            location.href = "class.html"
+            // alert('procceed to update')
+        }
     })
     // console.log(update)
     // console.log(edit_template)
